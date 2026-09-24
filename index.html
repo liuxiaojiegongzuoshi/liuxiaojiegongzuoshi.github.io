@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>刘小姐工作室 · 睡衣货盘</title>
+<meta name="description" content="刘小姐工作室睡衣货盘，春秋季家居服拿货，丝光棉、云朵棉、冰雪丝、珊瑚绒等39款家居服，低于50元加5元、50元以上加8元。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%235F6F52'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='%23FAF6F2' font-family='serif'%3E刘%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
+<style>
+:root{
+  --paper:#FAF6F2; --paper-2:#F1EAE1; --ink:#33302B; --ink-soft:#7A736A;
+  --pine:#5F6F52; --pine-deep:#46523C; --rose:#C98A8A; --gold:#B8956A;
+  --line:rgba(51,48,43,.14);
+  --serif:"Noto Serif SC","Songti SC","SimSun",serif;
+  --sans:"Noto Sans SC","Microsoft YaHei","PingFang SC",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.8;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1240px;margin:0 auto;padding:0 36px}
+@media(max-width:720px){.wrap{padding:0 18px}}
+
+.head{border-bottom:1px solid var(--line)}
+.head-inner{max-width:1240px;margin:0 auto;padding:16px 36px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+@media(max-width:720px){.head-inner{padding:13px 18px}}
+.brand{font-family:var(--serif);font-weight:700;font-size:18px;letter-spacing:.1em;display:flex;align-items:center;gap:10px}
+.brand .dot{width:8px;height:8px;border-radius:50%;background:var(--rose);display:inline-block}
+.head-tel{font-size:14px;letter-spacing:.06em;color:var(--pine);border:1px solid var(--pine);padding:7px 18px;border-radius:2px;transition:all .3s}
+.head-tel:hover{background:var(--pine);color:#fff}
+
+.hero{background:var(--pine-deep);color:#fff;padding:86px 0 72px;position:relative;overflow:hidden}
+.hero::before{content:"SLEEPWEAR";position:absolute;right:-10px;bottom:-46px;font-family:var(--serif);font-size:150px;font-weight:900;color:rgba(255,255,255,.05);letter-spacing:.04em;pointer-events:none}
+.hero .kicker{font-size:13px;letter-spacing:.34em;color:var(--gold);margin-bottom:20px}
+.hero h1{font-family:var(--serif);font-size:clamp(36px,5vw,58px);font-weight:900;letter-spacing:.08em;line-height:1.2}
+.hero .sub{margin-top:18px;font-weight:300;color:rgba(255,255,255,.85);max-width:44em;font-size:15.5px}
+.hero .stats{display:flex;gap:40px;margin-top:34px;flex-wrap:wrap}
+.hero .stats div{font-family:var(--serif)}
+.hero .stats b{display:block;font-size:30px;font-weight:700;color:var(--gold-soft,#D9C6AA)}
+.hero .stats span{font-size:12.5px;letter-spacing:.16em;color:rgba(255,255,255,.7)}
+
+.filters{padding:26px 0 8px}
+.filters .wrap{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+.filters select{background:#fff;border:1px solid var(--line);color:var(--ink);padding:9px 14px;font-size:13.5px;font-family:var(--sans);border-radius:2px;outline:none;cursor:pointer}
+.filters select:focus{border-color:var(--pine)}
+.filters .count{font-size:13px;color:var(--ink-soft);letter-spacing:.06em}
+.filters .clear{font-size:13px;color:var(--pine);cursor:pointer;border-bottom:1px solid var(--pine);padding-bottom:1px}
+.filters .clear:hover{color:var(--rose);border-color:var(--rose)}
+
+.grid{padding:22px 0 90px}
+.grid-inner{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+@media(max-width:1100px){.grid-inner{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:760px){.grid-inner{grid-template-columns:repeat(2,1fr);gap:14px}}
+.card{background:#fff;border:1px solid var(--line);overflow:hidden;display:flex;flex-direction:column;transition:transform .3s, box-shadow .3s}
+.card:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(70,60,44,.1)}
+.card-img{position:relative;aspect-ratio:1/1.05;overflow:hidden;background:var(--paper-2)}
+.card-img img{display:none;width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.card-img img.active{display:block}
+.card:hover .card-img img.active{transform:scale(1.04)}
+.card-img .tag{position:absolute;left:10px;top:10px;background:rgba(70,60,44,.72);color:#fff;font-size:11px;letter-spacing:.14em;padding:4px 10px;border-radius:2px;z-index:3}
+.nav-btn{position:absolute;top:50%;transform:translateY(-50%);width:30px;height:30px;border:0;border-radius:50%;background:rgba(255,255,255,.85);color:var(--pine-deep);font-size:17px;line-height:1;cursor:pointer;z-index:4;opacity:0;transition:opacity .3s;box-shadow:0 2px 6px rgba(0,0,0,.15)}
+.card:hover .nav-btn{opacity:1}
+.nav-btn.prev{left:8px}
+.nav-btn.next{right:8px}
+.nav-btn:hover{background:#fff}
+.dots{position:absolute;left:0;right:0;bottom:8px;display:flex;justify-content:center;gap:6px;z-index:4}
+.dots i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.55);transition:background .3s}
+.dots i.on{background:#fff}
+@media(max-width:760px){.nav-btn{opacity:.9}}
+.noimg{width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--ink-soft);font-size:13px}
+.card-body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:7px}
+.card-body h3{font-family:var(--serif);font-size:15.5px;font-weight:700;letter-spacing:.02em;line-height:1.45}
+.meta{font-size:12.5px;color:var(--ink-soft);font-weight:300;display:flex;gap:8px;align-items:baseline}
+.meta span{flex:0 0 44px;color:var(--gold);font-size:11.5px;letter-spacing:.18em}
+.meta.sizes{min-height:1.3em}
+.price-row{margin-top:6px;display:flex;align-items:center;justify-content:space-between;border-top:1px dashed var(--line);padding-top:10px}
+.prices{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.price{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--pine-deep)}
+.cost{font-size:12px;color:var(--ink-soft);text-decoration:line-through;font-weight:300}
+.diff{font-size:11.5px;color:var(--rose);border:1px solid var(--rose);padding:2px 8px;border-radius:2px;letter-spacing:.06em}
+
+.contact{background:var(--paper-2);padding:64px 0}
+.contact .wrap{display:flex;justify-content:space-between;align-items:center;gap:28px;flex-wrap:wrap}
+.contact h2{font-family:var(--serif);font-size:24px;font-weight:700;letter-spacing:.06em}
+.contact p{font-size:13.5px;color:var(--ink-soft);font-weight:300;margin-top:8px}
+.contact-tel{font-family:var(--serif);font-size:30px;font-weight:700;color:var(--pine-deep);border-bottom:2px solid var(--gold);transition:color .3s}
+.contact-tel:hover{color:var(--rose)}
+
+.foot{padding:22px 0;background:var(--pine-deep);color:rgba(255,255,255,.72);font-size:12px;letter-spacing:.14em}
+.foot .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+.hidden{display:none!important}
+</style>
+</head>
+<body>
+
+<header class="head">
+  <div class="head-inner">
+    <a href="#top" class="brand"><span class="dot"></span>刘小姐工作室</a>
+    <a href="tel:15700075553" class="head-tel">电话 15700075553</a>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="kicker">PAJAMA CATALOG · 睡衣货盘</div>
+    <h1>刘小姐工作室<br>春秋季睡衣家居服 · 货盘</h1>
+    <p class="sub">丝光棉、云朵棉、冰雪丝、珊瑚绒、德绒……39 款家居服现货，119 张实拍图，一手拿货价，零售价公开透明，欢迎批发采购。</p>
+    <div class="stats">
+      <div><b>39</b><span>款在售</span></div>
+      <div><b>119</b><span>张实拍</span></div>
+      <div><b>¥18 起</b><span>一手拿货价</span></div>
+      <div><b>¥61 封顶</b><span>零售建议价</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="filters">
+  <div class="wrap">
+    <select id="f-season">
+      <option value="">全部季节</option>
+      <option value="春秋">春秋</option><option value="春秋季">春秋季</option><option value="夏季">夏季</option><option value="冬款">冬款</option><option value="冬季">冬季</option><option value="秋冬季">秋冬季</option>
+    </select>
+    <select id="f-fabric">
+      <option value="">全部面料</option>
+      <option value="丝光棉">丝光棉</option><option value="云朵棉">云朵棉</option><option value="麻麻纱">麻麻纱</option><option value="冰雪丝">冰雪丝</option><option value="提花冰雪丝">提花冰雪丝</option><option value="冰丝">冰丝</option><option value="螺纹德绒">螺纹德绒</option><option value="珊瑚绒">珊瑚绒</option><option value="半边绒">半边绒</option><option value="玉兔绒">玉兔绒</option>
+    </select>
+    <span class="count" id="count"></span>
+    <span class="clear" id="clear">清除筛选</span>
+  </div>
+</section>
+
+<section class="grid">
+  <div class="wrap grid-inner" id="grid">
+
+    <article class="card" data-season="春秋" data-fabric="丝光棉">
+      <div class="card-img" data-idx="0">
+          <img src="p3_1_s.jpg" alt="女款908系列" loading="lazy" class="active"><img src="p3_2_s.jpg" alt="女款908系列" loading="lazy" class=""><img src="p3_3_s.jpg" alt="女款908系列" loading="lazy" class=""><img src="p3_4_s.jpg" alt="女款908系列" loading="lazy" class=""><img src="p3_5_s.jpg" alt="女款908系列" loading="lazy" class=""><img src="p3_6_s.jpg" alt="女款908系列" loading="lazy" class="">
+          <span class="tag">春秋</span>
+          <button class="nav-btn prev" type="button" aria-label="上一张">‹</button>
+          <button class="nav-btn next" type="button" aria-label="下一张">›</button><div class="dots"><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></div>
+        </div>
+      <div class="card-body">
+        <h3>女款908系列</h3>
+        <div class="meta"><span>面料</span>丝光棉</div>
+        <div class="meta sizes"><span>尺码</span>L（80-120） / XL（120-135） / XXL（130-150）</div>
+        <div class="price-row">
+          <div class="prices">
+            <span class="price">¥33</span>
+            <span class="cost">拿货 ¥28</span>
+          </div>
+          <span class="diff">+5元</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-season="春秋" data-fabric="丝光棉">
+      <div class="card-img" data-idx="0">
+          <img src="p4_1_s.jpg" alt="男士958系列" loading="lazy" class="active"><img src="p4_2_s.jpg" alt="男士958系列" loading="lazy" class=""><img src="p4_3_s.jpg" alt="男士958系列" loading="lazy" class=""><img src="p4_4_s.jpg" alt="男士958系列" loading="lazy" class=""><img src="p4_5_s.jpg" alt="男士958系列" loading="lazy" class=""><img src="p4_6_s.jpg" alt="男士958系列" loading="lazy" class=""><img src="p4_7_s.jpg" alt="男士958系列" loading="lazy" class=""><img src="p4_8_s.jpg" alt="男士958系列" loading="lazy" class=""><img src="p4_9_s.jpg" alt="男士958系列" loading="lazy" class=""><img src="p4_10_s.jpg" alt="男士958系列" loading="lazy" class=""><img src="p4_11_s.jpg" alt="男士958系列" loading="lazy" class="">
+          <span class="tag">春秋</span>
+          <button class="nav-btn prev" type="button" aria-label="上一张">‹</button>
+          <button class="nav-btn next" type="button" aria-label="下一张">›</button><div class="dots"><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></div>
+        </div>
+      <div class="card-body">
+        <h3>男士958系列</h3>
+        <div class="meta"><span>面料</span>丝光棉</div>
+        <div class="meta sizes"><span>尺码</span>L（90-130） / XL（130-150） / XXL（150-170） / 3XL（170-200）</div>
+        <div class="price-row">
+          <div class="prices">
+            <span class="price">¥37</span>
+            <span class="cost">拿货 ¥32</span>
+          </div>
+          <span class="diff">+5元</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-season="春秋季" data-fabric="云朵棉">
+      <div class="card-img" data-idx="0">
+          <img src="p5_1_s.jpg" alt="云朵棉双长月牙款" loading="lazy" class="active"><img src="p5_2_s.jpg" alt="云朵棉双长月牙款" loading="lazy" class=""><img src="p5_3_s.jpg" alt="云朵棉双长月牙款" loading="lazy" class=""><img src="p5_4_s.jpg" alt="云朵棉双长月牙款" loading="lazy" class="">
+          <span class="tag">春秋季</span>
+          <button class="nav-btn prev" type="button" aria-label="上一张">‹</button>
+          <button class="nav-btn next" type="button" aria-label="下一张">›</button><div class="dots"><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></div>
+        </div>
+      <div class="card-body">
+        <h3>云朵棉双长月牙款</h3>
+        <div class="meta"><span>面料</span>云朵棉</div>
+        <div class="meta sizes"><span>尺码</span>小码80-120 / 大码120-140</div>
+        <div class="price-row">
+          <div class="prices">
+            <span class="price">¥27</span>
+            <span class="cost">拿货 ¥22</span>
+          </div>
+          <span class="diff">+5元</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-season="春秋季" data-fabric="云朵棉">
+      <div class="card-img" data-idx="0">
+          <img src="p6_1_s.jpg" alt="男士云朵棉款" loading="lazy" class="active"><img src="p6_2_s.jpg" alt="男士云朵棉款" loading="lazy" class=""><img src="p6_3_s.jpg" alt="男士云朵棉款" loading="lazy" class="">
+          <span class="tag">春秋季</span>
+          <button class="nav-btn prev" type="button" aria-label="上一张">‹</button>
+          <button class="nav-btn next" type="button" aria-label="下一张">›</button><div class="dots"><i class="on"></i><i class=""></i><i class=""></i></div>
+        </div>
+      <div class="card-body">
+        <h3>男士云朵棉款</h3>
+        <div class="meta"><span>面料</span>云朵棉</div>
+        <div class="meta sizes"><span>尺码</span>L（90-130） / XL（130-150） / XXL（150-165） / 3XL（165-195）</div>
+        <div class="price-row">
+          <div class="prices">
+            <span class="price">¥30</span>
+            <span class="cost">拿货 ¥25</span>
+          </div>
+          <span class="diff">+5元</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-season="夏季" data-fabric="麻麻纱">
+      <div class="card-img" data-idx="0">
+          <img src="p7_1_s.jpg" alt="638（带胸垫）" loading="lazy" class="active"><img src="p7_2_s.jpg" alt="638（带胸垫）" loading="lazy" class=""><img src="p7_3_s.jpg" alt="638（带胸垫）" loading="lazy" class="">
+          <span class="tag">夏季</span>
+          <button class="nav-btn prev" type="button" aria-label="上一张">‹</button>
+          <button class="nav-btn next" type="button" aria-label="下一张">›</button><div class="dots"><i class="on"></i><i class=""></i><i class=""></i></div>
+        </div>
+      <div class="card-body">
+        <h3>638（带胸垫）</h3>
+        <div class="meta"><span>面料</span>麻麻纱</div>
+        <div class="meta sizes"><span>尺码</span>均码（80-145）</div>
+        <div class="price-row">
+          <div class="prices">
+            <span class="price">¥33</span>
+            <span class="cost">拿货 ¥28</span>
+          </div>
+          <span class="diff">+5元</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-season="夏季" data-fabric="麻麻纱">
+      <div class="card-img" data-idx="0">
+          <img src="p8_1_s.jpg" alt="611（带胸垫）" loading="lazy" class="active"><img src="p8_2_s.jpg" alt="611（带胸垫）" loading="lazy" class=""><img src="p8_3_s.jpg" alt="611（带胸垫）" loading="lazy" class=""><img src="p8_4_s.jpg" alt="611（带胸垫）" loading="lazy" class=""><img src="p8_5_s.jpg" alt="611（带胸垫）" loading="lazy" class="">
+          <span class="tag">夏季</span>
+          <button class="nav-btn prev" type="button" aria-label="上一张">‹</button>
+          <button class="nav-btn next" type="button" aria-label="下一张">›</button><div class="dots"><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></div>
+        </div>
+      <div class="card-body">
+        <h3>611（带胸垫）</h3>
+        <div class="meta"><span>面料</span>麻麻纱</div>
+        <div class="meta sizes"><span>尺码</span>均码（80-145）</div>
+        <div class="price-row">
+          <div class="prices">
+            <span class="price">¥31</span>
+            <span class="cost">拿货 ¥26</span>
+          </div>
+          <span class="diff">+5元</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-season="春秋季" data-fabric="冰雪丝">
+      <div class="card-img" data-idx="0">
+          <img src="p9_1_s.jpg" alt="5588" loading="lazy" class="active">
+          <span class="tag">春秋季</span>
+        </div>
+      <div class="card-body">
+        <h3>5588</h3>
+        <div class="meta"><span>面料</span>冰雪丝</div>
+        <div class="meta sizes"><span>尺码</span>XL（90-145） / XXL（145-165） / 3XL（165-200）</div>
+        <div class="price-row">
+          <div class="prices">
+            <span class="price">¥58</span>
+            <span class="cost">拿货 ¥50</span>
+          </div>
+          <span class="diff">+8元</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-season="春秋季" data-fabric="冰雪丝">
+      <div class="card-img" data-idx="0">
+          <img src="p10_1_s.jpg" alt="5586" loading="lazy" class="active">
+          <span class="tag">春秋季</span>
+        </div>
+      <div class="card-body">
+        <h3>5586</h3>
+        <div class="meta"><span>面料</span>冰雪丝</div>
+        <div class="meta sizes"><span>尺码</span>XL（90-145） / XXL（145-165） / 3XL（165-200）</div>
+        <div class="price-row">
+          <div class="prices">
+            <span class="price">¥59</span>
+            <span class="cost">拿货 ¥51</span>
+          </div>
+          <span class="diff">+8元</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-season="春秋季" data-fabric="冰雪丝">
+      <div class="card-img" data-idx="0">
+          <img src="p11_1_s.jpg" alt="5587" loading="lazy" class="active"><img src="p11_2_s.jpg" alt="5587" loading="lazy" class="">
+          <span class="tag">春秋季</span>
+          <button class="nav-btn prev" type="button" aria-label="上一张">‹</button>
+          <button class="nav-btn next" type="button" aria-label="下一张">›</button><div class="dots"><i class="on"></i><i class=""></i></div>
+        </div>
+      <div class="card-body">
+        <h3>5587</h3>
+        <div class="meta"><span>面料</span>冰雪丝</div>
+        <div class="meta sizes"><span>尺码</span>XL（90-145） / XXL（145-165） / 3XL（165-200）</div>
+        <div class="price-row">
+          <div class="prices">
+            <span class="price">¥61</span>
+            <span class="cost">拿货 ¥53</span>
+          </div>
+          <span class="diff">+8元</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-season="夏季" data-fabric="冰雪丝">
+      <div class="card-img" data-idx="0">
+          <img src="p12_1_s.jpg" alt="2630" loading="lazy" class="active">
+          <span class="tag">夏季</span>
+        </div>
+      <div class="card-body">
+        <h3>2630</h3>
+        <div class="meta"><span>面料</span>冰雪丝</div>
+        <div class="meta sizes"><span>尺码</span>XL（90-145） / XXL（145-165） / 3XL（165-200）</div>
+        <div class="price-row">
+          <div class="prices">
+            <span class="price">¥59</span>
+            <span class="cost">拿货 ¥51</span>
+          </div>
+          <span class="diff">+8元</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-season="夏季" data-fabric="冰雪丝">
+      <div class="card-img" data-idx="0">
+          <img src="p13_1_s.jpg" alt="2608" loading="lazy" class="active"><img src="p13_2_s.jpg" alt="2608" loading="lazy" class="">
+          <span class="tag">夏季</span>
+          <button class="nav-btn prev" type="button" aria-label="上一张">‹</button>
+          <button class="nav-btn next" type="button" aria-label="下一张">›</button><div class="dots"><i class="on"></i><i class=""></i></div>
+        </div>
+      <div class="card-body">
+        <h3>2608</h3>
+        <div class="meta"><span>面料</span>冰雪丝</div>
+        <div class="meta sizes"><span>尺码</span>M（80-100） / L（100-120） / XL（120-140）</div>
+        <div class="price-row">
+          <div class="prices">
+            <span class="price">¥48</span>
+            <span class="cost">拿货 ¥43</span>
+          </div>
+          <span class="diff">+5元</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-season="夏季" data-fabric="冰雪丝">
+      <div class="card-img" data-idx="0">
+          <img src="p14_1_s.jpg" alt="2620（带胸垫）" loading="lazy" class="active">
+          <span class="tag">夏季</span>
+        </div>
+      <div class="card-body">
+        <h3>2620（带胸垫）</h3>
+        <div class="meta"><span>面料</span>冰雪丝</div>
+        <div class="meta sizes"><span>尺码</span>M（80-100） / L（100-120） / XL（120-140）</div>
+        <div class="price-row">
+          <div class="prices">
+            <span class="price">¥51</span>
+            <span class="cost">拿货 ¥46</span>
+          </div>
+          <span class="diff">+5元</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-season="夏季" data-fabric="冰雪丝">
+      <div class="card-img" data-idx="0">
+          <img src="p15_1_s.jpg" alt="2622（带胸垫）" loading="lazy" class="active">
+          <span class="tag">夏季</span>
+        </div>
+      <div class="card-body">
+        <h3>2622（带胸垫）</h3>
+        <div class="meta"><span>面料</span>冰雪丝</div>
+        <div class="meta sizes"><span>尺码</span>M（80-110） / L（110-130） / XL（130-155）</div>
+        <div class="price-row">
+          <div class="prices">
+            <span class="price">¥58</span>
+            <span class="cost">拿货 ¥50</span>
+          </div>
+          <span class="diff">+8元</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-season="夏季" data-fabric="冰雪丝">
+      <div class="card-img" data-idx="0">
+          <img src="p16_1_s.jpg" alt="2633（带胸垫）" loading="lazy" class="active"><img src="p16_2_s.jpg" alt="2633（带胸垫）" loading="lazy" class="">
+          <span class="tag">夏季</span>
+          <button class="nav-btn prev" type="button" aria-label="上一张">‹</button>
+          <button class="nav-btn next" type="button" aria-label="下一张">›</button><div class="dots"><i class="on"></i><i class=""></i></div>
+        </div>
+      <div class="card-body">
+        <h3>2633（带胸垫）</h3>
+        <div class="meta"><span>面料</span>冰雪丝</div>
+        <div class="meta sizes"><span>尺码</span>M（80-100） / L（100-120） / XL（120-140）</div>
+        <div class="price-row">
+          <div class="prices">
+            <span class="price">¥60</span>
+            <span class="cost">拿货 ¥52</span>
+          </div>
+          <span class="diff">+8元</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-season="春秋季" data-fabric="冰雪丝">
+      <div class="card-img" data-idx="0">
+          <img src="p17_1_s.jpg" alt="5592" loading="lazy" class="active"><img src="p17_2_s.jpg" alt="5592" loading="lazy" class="">
+          <span class="tag">春秋季</span>
+          <button class="nav-btn prev" type="button" aria-label="上一张">‹</button>
+          <button class="nav-btn next" type="button" aria-label="下一张">›</button><div class="dots"><i class="on"></i><i class=""></i></div>
+        </div>
+      <div class="card-body">
+        <h3>5592</h3>
+        <div class="meta"><span>面料</span>冰雪丝</div>
+        <div class="meta sizes"><span>尺码</span>M（80-100） / L（100-120） / XL（120-140）</div>
+        <div class="price-row">
+          <div class="prices">
+            <span class="price">¥49</span>
+            <span class="cost">拿货 ¥44</span>
+          </div>
+          <span class="diff">+5元</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-season="春秋季" data-fabric="冰雪丝">
+      <div class="card-img" data-idx="0">
+          <img src="p18_1_s.jpg" alt="5591" loading="lazy" class="active">
+          <span class="tag">春秋季</span>
+        </div>
+      <div class="card-body">
+        <h3>5591</h3>
+        <div class="meta"><span>面料</span>冰雪丝</div>
+        <div class="meta sizes"><span>尺码</span>M（80-100） / L（100-120） / XL（120-140）</div>
+        <div class="price-row">
+          <div class="prices">
+            <span class="price">¥60</span>
+            <span class="cost">拿货 ¥52</span>
+          </div>
+          <span class="diff">+8元</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-season="春秋季" data-fabric="冰雪丝">
+      <div class="card-img" data-idx="0">
+          <img src="p19_1_s.jpg" alt="5590" loading="lazy" class="active">
+          <span class="tag">春秋季</span>
+        </div>
+      <div class="card-body">
+        <h3>5590</h3>
+        <div class="meta"><span>面料</span>冰雪丝</div>
+        <div class="meta sizes"><span>尺码</span>M（80-100） / L（100-120） / XL（120-140）</div>
+        <div class="price-row">
+          <div class="prices">
+            <span class="price">¥60</span>
+            <span class="cost">拿货 ¥52</span>
+          </div>
+          <span class="diff">+8元</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-season="春秋季" data-fabric="冰雪丝">
+      <div class="card-img" data-idx="0">
+          <img src="p20_1_s.jpg" alt="5593" loading="lazy" class="active">
+          <span class="tag">春秋季</span>
+        </div>
+      <div class="card-body">
+        <h3>5593</h3>
+        <div class="meta"><span>面料</span>冰雪丝</div>
+        <div class="meta sizes"><span>尺码</span>M（80-100） / L（100-120） / XL（120-140）</div>
+        <div class="price-row">
+          <div class="prices">
+            <span class="price">¥49</span>
+            <span class="cost">拿货 ¥44</span>
+          </div>
+          <span class="diff">+5元</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-season="春秋季" data-fabric="冰雪丝">
+      <div class="card-img" data-idx="0">
+          <img src="p21_1_s.jpg" alt="5596" loading="lazy" class="active">
+          <span class="tag">春秋季</span>
+        </div>
+      <div class="card-body">
+        <h3>5596</h3>
+        <div class="meta"><span>面料</span>冰雪丝</div>
+        <div class="meta sizes"><span>尺码</span>M（80-100） / L（100-120） / XL（120-140）</div>
+        <div class="price-row">
+          <div class="prices">
+            <span class="price">¥60</span>
+            <span class="cost">拿货 ¥52</span>
+          </div>
+          <span class="diff">+8元</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-season="春秋季" data-fabric="冰雪丝">
+      <div class="card-img" data-idx="0">
+          <img src="p22_1_s.jpg" alt="8850" loading="lazy" class="active">
+          <span class="tag">春秋季</span>
+        </div>
+      <div class="card-body">
+        <h3>8850</h3>
+        <div class="meta"><span>面料</span>冰雪丝</div>
+        <div class="meta sizes"><span>尺码</span>M（80-100） / L（100-120） / XL（120-140）</div>
+        <div class="price-row">
+          <div class="prices">
+            <span class="price">¥61</span>
+            <span class="cost">拿货 ¥53</span>
+          </div>
+          <span class="diff">+8元</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-season="春秋季" data-fabric="云朵棉">
+      <div class="card-img" data-idx="0">
+          <img src="p23_1_s.jpg" alt="云朵棉开扣双长" loading="lazy" class="active"><img src="p23_2_s.jpg" alt="云朵棉开扣双长" loading="lazy" class=""><img src="p23_3_s.jpg" alt="云朵棉开扣双长" loading="lazy" class="">
+          <span class="tag">春秋季</span>
+          <button class="nav-btn prev" type="button" aria-label="上一张">‹</button>
+          <button class="nav-btn next" type="button" aria-label="下一张">›</button><div class="dots"><i class="on"></i><i class=""></i><i class=""></i></div>
+        </div>
+      <div class="card-body">
+        <h3>云朵棉开扣双长</h3>
+        <div class="meta"><span>面料</span>云朵棉</div>
+        <div class="meta sizes"><span>尺码</span>小码80-120 / 大码120-140</div>
+        <div class="price-row">
+          <div class="prices">
+            <span class="price">¥23</span>
+            <span class="cost">拿货 ¥18</span>
+          </div>
+          <span class="diff">+5元</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-season="夏季" data-fabric="冰雪丝">
+      <div class="card-img" data-idx="0">
+          <img src="p24_1_s.jpg" alt="2637" loading="lazy" class="active">
+          <span class="tag">夏季</span>
+        </div>
+      <div class="card-body">
+        <h3>2637</h3>
+        <div class="meta"><span>面料</span>冰雪丝</div>
+        <div class="meta sizes"><span>尺码</span>M（80-100） / L（100-125） / XL（125-140）</div>
+        <div class="price-row">
+          <div class="prices">
+            <span class="price">¥58</span>
+            <span class="cost">拿货 ¥50</span>
+          </div>
+          <span class="diff">+8元</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-season="夏季" data-fabric="冰雪丝">
+      <div class="card-img" data-idx="0">
+          <img src="p25_1_s.jpg" alt="2612" loading="lazy" class="active"><img src="p25_2_s.jpg" alt="2612" loading="lazy" class="">
+          <span class="tag">夏季</span>
+          <button class="nav-btn prev" type="button" aria-label="上一张">‹</button>
+          <button class="nav-btn next" type="button" aria-label="下一张">›</button><div class="dots"><i class="on"></i><i class=""></i></div>
+        </div>
+      <div class="card-body">
+        <h3>2612</h3>
+        <div class="meta"><span>面料</span>冰雪丝</div>
+        <div class="meta sizes"><span>尺码</span>均码（80-145）</div>
+        <div class="price-row">
+          <div class="prices">
+            <span class="price">¥28</span>
+            <span class="cost">拿货 ¥23</span>
+          </div>
+          <span class="diff">+5元</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-season="夏季" data-fabric="冰雪丝">
+      <div class="card-img" data-idx="0">
+          <img src="p26_1_s.jpg" alt="2657" loading="lazy" class="active"><img src="p26_2_s.jpg" alt="2657" loading="lazy" class=""><img src="p26_3_s.jpg" alt="2657" loading="lazy" class=""><img src="p26_4_s.jpg" alt="2657" loading="lazy" class=""><img src="p26_5_s.jpg" alt="2657" loading="lazy" class=""><img src="p26_6_s.jpg" alt="2657" loading="lazy" class="">
+          <span class="tag">夏季</span>
+          <button class="nav-btn prev" type="button" aria-label="上一张">‹</button>
+          <button class="nav-btn next" type="button" aria-label="下一张">›</button><div class="dots"><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></div>
+        </div>
+      <div class="card-body">
+        <h3>2657</h3>
+        <div class="meta"><span>面料</span>冰雪丝</div>
+        <div class="meta sizes"><span>尺码</span>M（80-100） / L（100-125） / XL（120-140）</div>
+        <div class="price-row">
+          <div class="prices">
+            <span class="price">¥47</span>
+            <span class="cost">拿货 ¥42</span>
+          </div>
+          <span class="diff">+5元</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-season="夏季" data-fabric="提花冰雪丝">
+      <div class="card-img" data-idx="0">
+          <img src="p27_1_s.jpg" alt="2632" loading="lazy" class="active">
+          <span class="tag">夏季</span>
+        </div>
+      <div class="card-body">
+        <h3>2632</h3>
+        <div class="meta"><span>面料</span>提花冰雪丝</div>
+        <div class="meta sizes"><span>尺码</span>XL（90-130） / XXL（130-160） / 3XL（160-200）</div>
+        <div class="price-row">
+          <div class="prices">
+            <span class="price">¥54</span>
+            <span class="cost">拿货 ¥49</span>
+          </div>
+          <span class="diff">+5元</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-season="夏季" data-fabric="提花冰雪丝">
+      <div class="card-img" data-idx="0">
+          <img src="p28_1_s.jpg" alt="2631" loading="lazy" class="active">
+          <span class="tag">夏季</span>
+        </div>
+      <div class="card-body">
+        <h3>2631</h3>
+        <div class="meta"><span>面料</span>提花冰雪丝</div>
+        <div class="meta sizes"><span>尺码</span>XL（90-130） / XXL（130-160） / 3XL（160-200）</div>
+        <div class="price-row">
+          <div class="prices">
+            <span class="price">¥54</span>
+            <span class="cost">拿货 ¥49</span>
+          </div>
+          <span class="diff">+5元</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-season="夏季" data-fabric="云朵棉">
+      <div class="card-img" data-idx="0">
+          <img src="p29_1_s.jpg" alt="云朵棉三件套" loading="lazy" class="active">
+          <span class="tag">夏季</span>
+        </div>
+      <div class="card-body">
+        <h3>云朵棉三件套</h3>
+        <div class="meta"><span>面料</span>云朵棉</div>
+        <div class="meta sizes"><span>尺码</span>均码（80-140）</div>
+        <div class="price-row">
+          <div class="prices">
+            <span class="price">¥26</span>
+            <span class="cost">拿货 ¥21</span>
+          </div>
+          <span class="diff">+5元</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-season="夏季" data-fabric="冰丝">
+      <div class="card-img" data-idx="0">
+          <img src="p30_1_s.jpg" alt="女士四件套" loading="lazy" class="active"><img src="p30_2_s.jpg" alt="女士四件套" loading="lazy" class="">
+          <span class="tag">夏季</span>
+          <button class="nav-btn prev" type="button" aria-label="上一张">‹</button>
+          <button class="nav-btn next" type="button" aria-label="下一张">›</button><div class="dots"><i class="on"></i><i class=""></i></div>
+        </div>
+      <div class="card-body">
+        <h3>女士四件套</h3>
+        <div class="meta"><span>面料</span>冰丝</div>
+        <div class="meta sizes"><span>尺码</span>L80-130 / XL130-160</div>
+        <div class="price-row">
+          <div class="prices">
+            <span class="price">¥50</span>
+            <span class="cost">拿货 ¥45</span>
+          </div>
+          <span class="diff">+5元</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-season="春秋季" data-fabric="云朵棉">
+      <div class="card-img" data-idx="0">
+          <img src="p31_1_s.jpg" alt="开扣花边云朵棉双长系列（带胸垫）" loading="lazy" class="active"><img src="p31_2_s.jpg" alt="开扣花边云朵棉双长系列（带胸垫）" loading="lazy" class=""><img src="p31_3_s.jpg" alt="开扣花边云朵棉双长系列（带胸垫）" loading="lazy" class=""><img src="p31_4_s.jpg" alt="开扣花边云朵棉双长系列（带胸垫）" loading="lazy" class=""><img src="p31_5_s.jpg" alt="开扣花边云朵棉双长系列（带胸垫）" loading="lazy" class=""><img src="p31_6_s.jpg" alt="开扣花边云朵棉双长系列（带胸垫）" loading="lazy" class="">
+          <span class="tag">春秋季</span>
+          <button class="nav-btn prev" type="button" aria-label="上一张">‹</button>
+          <button class="nav-btn next" type="button" aria-label="下一张">›</button><div class="dots"><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></div>
+        </div>
+      <div class="card-body">
+        <h3>开扣花边云朵棉双长系列（带胸垫）</h3>
+        <div class="meta"><span>面料</span>云朵棉</div>
+        <div class="meta sizes"><span>尺码</span>小码80-120 / 大码120-140</div>
+        <div class="price-row">
+          <div class="prices">
+            <span class="price">¥30</span>
+            <span class="cost">拿货 ¥25</span>
+          </div>
+          <span class="diff">+5元</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-season="春秋季" data-fabric="云朵棉">
+      <div class="card-img" data-idx="0">
+          <img src="p32_1_s.jpg" alt="圆领贝花款双长系列（带胸垫）" loading="lazy" class="active"><img src="p32_2_s.jpg" alt="圆领贝花款双长系列（带胸垫）" loading="lazy" class=""><img src="p32_3_s.jpg" alt="圆领贝花款双长系列（带胸垫）" loading="lazy" class=""><img src="p32_4_s.jpg" alt="圆领贝花款双长系列（带胸垫）" loading="lazy" class=""><img src="p32_5_s.jpg" alt="圆领贝花款双长系列（带胸垫）" loading="lazy" class="">
+          <span class="tag">春秋季</span>
+          <button class="nav-btn prev" type="button" aria-label="上一张">‹</button>
+          <button class="nav-btn next" type="button" aria-label="下一张">›</button><div class="dots"><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></div>
+        </div>
+      <div class="card-body">
+        <h3>圆领贝花款双长系列（带胸垫）</h3>
+        <div class="meta"><span>面料</span>云朵棉</div>
+        <div class="meta sizes"><span>尺码</span>小码80-120 / 大码120-140</div>
+        <div class="price-row">
+          <div class="prices">
+            <span class="price">¥27</span>
+            <span class="cost">拿货 ¥22</span>
+          </div>
+          <span class="diff">+5元</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-season="春秋季" data-fabric="云朵棉">
+      <div class="card-img" data-idx="0">
+          <img src="p33_1_s.jpg" alt="开扣云朵棉双长带胸垫系列" loading="lazy" class="active"><img src="p33_2_s.jpg" alt="开扣云朵棉双长带胸垫系列" loading="lazy" class=""><img src="p33_3_s.jpg" alt="开扣云朵棉双长带胸垫系列" loading="lazy" class=""><img src="p33_4_s.jpg" alt="开扣云朵棉双长带胸垫系列" loading="lazy" class=""><img src="p33_5_s.jpg" alt="开扣云朵棉双长带胸垫系列" loading="lazy" class=""><img src="p33_6_s.jpg" alt="开扣云朵棉双长带胸垫系列" loading="lazy" class=""><img src="p33_7_s.jpg" alt="开扣云朵棉双长带胸垫系列" loading="lazy" class=""><img src="p33_8_s.jpg" alt="开扣云朵棉双长带胸垫系列" loading="lazy" class=""><img src="p33_9_s.jpg" alt="开扣云朵棉双长带胸垫系列" loading="lazy" class="">
+          <span class="tag">春秋季</span>
+          <button class="nav-btn prev" type="button" aria-label="上一张">‹</button>
+          <button class="nav-btn next" type="button" aria-label="下一张">›</button><div class="dots"><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></div>
+        </div>
+      <div class="card-body">
+        <h3>开扣云朵棉双长带胸垫系列</h3>
+        <div class="meta"><span>面料</span>云朵棉</div>
+        <div class="meta sizes"><span>尺码</span>XL（80-120） / XXL（120-140）</div>
+        <div class="price-row">
+          <div class="prices">
+            <span class="price">¥35</span>
+            <span class="cost">拿货 ¥30</span>
+          </div>
+          <span class="diff">+5元</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-season="春秋季" data-fabric="螺纹德绒">
+      <div class="card-img" data-idx="0">
+          <img src="p35_1_s.jpg" alt="女士双长开扣德绒系列" loading="lazy" class="active"><img src="p35_2_s.jpg" alt="女士双长开扣德绒系列" loading="lazy" class=""><img src="p35_3_s.jpg" alt="女士双长开扣德绒系列" loading="lazy" class=""><img src="p35_4_s.jpg" alt="女士双长开扣德绒系列" loading="lazy" class=""><img src="p35_5_s.jpg" alt="女士双长开扣德绒系列" loading="lazy" class=""><img src="p35_6_s.jpg" alt="女士双长开扣德绒系列" loading="lazy" class=""><img src="p35_7_s.jpg" alt="女士双长开扣德绒系列" loading="lazy" class=""><img src="p35_8_s.jpg" alt="女士双长开扣德绒系列" loading="lazy" class=""><img src="p35_9_s.jpg" alt="女士双长开扣德绒系列" loading="lazy" class=""><img src="p35_10_s.jpg" alt="女士双长开扣德绒系列" loading="lazy" class="">
+          <span class="tag">春秋季</span>
+          <button class="nav-btn prev" type="button" aria-label="上一张">‹</button>
+          <button class="nav-btn next" type="button" aria-label="下一张">›</button><div class="dots"><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></div>
+        </div>
+      <div class="card-body">
+        <h3>女士双长开扣德绒系列</h3>
+        <div class="meta"><span>面料</span>螺纹德绒</div>
+        <div class="meta sizes"><span>尺码</span>小码80-120 / 大码120-140</div>
+        <div class="price-row">
+          <div class="prices">
+            <span class="price">¥33</span>
+            <span class="cost">拿货 ¥28</span>
+          </div>
+          <span class="diff">+5元</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-season="冬款" data-fabric="珊瑚绒">
+      <div class="card-img" data-idx="0">
+          <img src="p37_1_s.jpg" alt="蝴蝶结款套装" loading="lazy" class="active">
+          <span class="tag">冬款</span>
+        </div>
+      <div class="card-body">
+        <h3>蝴蝶结款套装</h3>
+        <div class="meta"><span>面料</span>珊瑚绒</div>
+        <div class="meta sizes"><span>尺码</span>L，XL</div>
+        <div class="price-row">
+          <div class="prices">
+            <span class="price">¥28</span>
+            <span class="cost">拿货 ¥23</span>
+          </div>
+          <span class="diff">+5元</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-season="冬季" data-fabric="珊瑚绒">
+      <div class="card-img" data-idx="0">
+          <img src="p38_1_s.jpg" alt="小熊拉链套装" loading="lazy" class="active">
+          <span class="tag">冬季</span>
+        </div>
+      <div class="card-body">
+        <h3>小熊拉链套装</h3>
+        <div class="meta"><span>面料</span>珊瑚绒</div>
+        <div class="meta sizes"><span>尺码</span>L，XL</div>
+        <div class="price-row">
+          <div class="prices">
+            <span class="price">¥30</span>
+            <span class="cost">拿货 ¥25</span>
+          </div>
+          <span class="diff">+5元</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-season="冬季" data-fabric="珊瑚绒">
+      <div class="card-img" data-idx="0">
+          <img src="p39_1_s.jpg" alt="豹纹双色套装" loading="lazy" class="active">
+          <span class="tag">冬季</span>
+        </div>
+      <div class="card-body">
+        <h3>豹纹双色套装</h3>
+        <div class="meta"><span>面料</span>珊瑚绒</div>
+        <div class="meta sizes"><span>尺码</span>L，XL</div>
+        <div class="price-row">
+          <div class="prices">
+            <span class="price">¥30</span>
+            <span class="cost">拿货 ¥25</span>
+          </div>
+          <span class="diff">+5元</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-season="冬季" data-fabric="半边绒">
+      <div class="card-img" data-idx="0">
+          <img src="p40_1_s.jpg" alt="卡通半边绒套装" loading="lazy" class="active"><img src="p40_2_s.jpg" alt="卡通半边绒套装" loading="lazy" class=""><img src="p40_3_s.jpg" alt="卡通半边绒套装" loading="lazy" class=""><img src="p40_4_s.jpg" alt="卡通半边绒套装" loading="lazy" class=""><img src="p40_5_s.jpg" alt="卡通半边绒套装" loading="lazy" class=""><img src="p40_6_s.jpg" alt="卡通半边绒套装" loading="lazy" class="">
+          <span class="tag">冬季</span>
+          <button class="nav-btn prev" type="button" aria-label="上一张">‹</button>
+          <button class="nav-btn next" type="button" aria-label="下一张">›</button><div class="dots"><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></div>
+        </div>
+      <div class="card-body">
+        <h3>卡通半边绒套装</h3>
+        <div class="meta"><span>面料</span>半边绒</div>
+        <div class="meta sizes"><span>尺码</span>小码80-120 / 大码120-140</div>
+        <div class="price-row">
+          <div class="prices">
+            <span class="price">¥34</span>
+            <span class="cost">拿货 ¥29</span>
+          </div>
+          <span class="diff">+5元</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-season="冬季" data-fabric="玉兔绒">
+      <div class="card-img" data-idx="0">
+          <img src="p41_1_s.jpg" alt="小熊拉链刺绣情侣家居套装" loading="lazy" class="active"><img src="p41_2_s.jpg" alt="小熊拉链刺绣情侣家居套装" loading="lazy" class=""><img src="p41_3_s.jpg" alt="小熊拉链刺绣情侣家居套装" loading="lazy" class="">
+          <span class="tag">冬季</span>
+          <button class="nav-btn prev" type="button" aria-label="上一张">‹</button>
+          <button class="nav-btn next" type="button" aria-label="下一张">›</button><div class="dots"><i class="on"></i><i class=""></i><i class=""></i></div>
+        </div>
+      <div class="card-body">
+        <h3>小熊拉链刺绣情侣家居套装</h3>
+        <div class="meta"><span>面料</span>玉兔绒</div>
+        <div class="meta sizes"><span>尺码</span>L，XL，XXL</div>
+        <div class="price-row">
+          <div class="prices">
+            <span class="price">¥47</span>
+            <span class="cost">拿货 ¥42</span>
+          </div>
+          <span class="diff">+5元</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-season="冬季" data-fabric="珊瑚绒">
+      <div class="card-img" data-idx="0">
+          <img src="p42_1_s.jpg" alt="条纹连帽，立领套装" loading="lazy" class="active"><img src="p42_2_s.jpg" alt="条纹连帽，立领套装" loading="lazy" class=""><img src="p42_3_s.jpg" alt="条纹连帽，立领套装" loading="lazy" class=""><img src="p42_4_s.jpg" alt="条纹连帽，立领套装" loading="lazy" class="">
+          <span class="tag">冬季</span>
+          <button class="nav-btn prev" type="button" aria-label="上一张">‹</button>
+          <button class="nav-btn next" type="button" aria-label="下一张">›</button><div class="dots"><i class="on"></i><i class=""></i><i class=""></i><i class=""></i></div>
+        </div>
+      <div class="card-body">
+        <h3>条纹连帽，立领套装</h3>
+        <div class="meta"><span>面料</span>珊瑚绒</div>
+        <div class="meta sizes"><span>尺码</span>小码80-120 / 大码120-140</div>
+        <div class="price-row">
+          <div class="prices">
+            <span class="price">¥30</span>
+            <span class="cost">拿货 ¥25</span>
+          </div>
+          <span class="diff">+5元</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-season="秋冬季" data-fabric="螺纹德绒">
+      <div class="card-img" data-idx="0">
+          <img src="p45_1_s.jpg" alt="男士刺绣德绒款" loading="lazy" class="active"><img src="p45_2_s.jpg" alt="男士刺绣德绒款" loading="lazy" class=""><img src="p45_3_s.jpg" alt="男士刺绣德绒款" loading="lazy" class=""><img src="p45_4_s.jpg" alt="男士刺绣德绒款" loading="lazy" class=""><img src="p45_5_s.jpg" alt="男士刺绣德绒款" loading="lazy" class=""><img src="p45_6_s.jpg" alt="男士刺绣德绒款" loading="lazy" class="">
+          <span class="tag">秋冬季</span>
+          <button class="nav-btn prev" type="button" aria-label="上一张">‹</button>
+          <button class="nav-btn next" type="button" aria-label="下一张">›</button><div class="dots"><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></div>
+        </div>
+      <div class="card-body">
+        <h3>男士刺绣德绒款</h3>
+        <div class="meta"><span>面料</span>螺纹德绒</div>
+        <div class="meta sizes"><span>尺码</span>小码（80-135） / 中码（135-160） / 大码（160-180）</div>
+        <div class="price-row">
+          <div class="prices">
+            <span class="price">¥36</span>
+            <span class="cost">拿货 ¥31</span>
+          </div>
+          <span class="diff">+5元</span>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="contact">
+  <div class="wrap">
+    <div>
+      <h2>采购咨询</h2>
+      <p>批量拿货、长期供货欢迎来电洽谈，支持整件批发。</p>
+    </div>
+    <a href="tel:15700075553" class="contact-tel">15700075553</a>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>© 2026 刘小姐工作室 · 睡衣货盘</span>
+    <span>春秋季睡衣家居服 · 现货拿货</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var season=document.getElementById('f-season');
+  var fabric=document.getElementById('f-fabric');
+  var grid=document.getElementById('grid');
+  var count=document.getElementById('count');
+  var cards=Array.prototype.slice.call(grid.querySelectorAll('.card'));
+  function apply(){
+    var s=season.value, f=fabric.value, n=0;
+    cards.forEach(function(c){
+      var okS=!s||c.getAttribute('data-season')===s;
+      var okF=!f||c.getAttribute('data-fabric')===f;
+      var show=okS&&okF;
+      c.classList.toggle('hidden',!show);
+      if(show) n++;
+    });
+    count.textContent='共 '+n+' 款';
+  }
+  season.addEventListener('change',apply);
+  fabric.addEventListener('change',apply);
+  document.getElementById('clear').addEventListener('click',function(){
+    season.value='';fabric.value='';apply();
+  });
+  apply();
+
+  /* multi-image switcher */
+  grid.addEventListener('click', function(ev){
+    var btn=ev.target.closest('.nav-btn');
+    if(!btn) return;
+    var box=btn.parentNode;
+    var imgs=box.querySelectorAll('img');
+    if(!imgs.length) return;
+    var idx=parseInt(box.getAttribute('data-idx')||'0',10);
+    if(btn.classList.contains('prev')) idx=(idx-1+imgs.length)%imgs.length;
+    else idx=(idx+1)%imgs.length;
+    box.setAttribute('data-idx',idx);
+    for(var i=0;i<imgs.length;i++) imgs[i].classList.toggle('active',i===idx);
+    var dots=box.querySelectorAll('.dots i');
+    for(var j=0;j<dots.length;j++) dots[j].classList.toggle('on',j===idx);
+  });
+})();
+</script>
+</body>
+</html>
